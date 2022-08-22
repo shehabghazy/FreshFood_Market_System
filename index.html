@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>FreshFood</title>
+</head>
+<body class="bg-second-color p-4">
+
+    <nav class="bg-light border-bottom rounded-top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-1 p-1 text-center">
+                    <a class="navbar-brand main-color fw-bold fs-5" href="#">FreshFood</a>
+                </div>
+                <div class="col-10"></div>
+                <div class="toBtn col-1 bg-primary text-center text-white p-1">
+                    <i class="fa-solid fa-user"></i><span class="ms-2 fs-5">Help</span>
+                </div>
+            </div>  
+        </div>    
+    </nav>
+
+    <section id="mainSection">
+        <div class="container-fluid">
+            <div class="row">
+
+                <article class="col-8 bg-white">
+                    <div class="container py-4">
+                        <div class="row">
+                            <div class="col-2 ">
+                                <img id="displayFoodphoto" class="w-100 h-100" src="images/logo.png" alt=" Photo Not Found">
+                            </div>
+                            <div class="col-10 border-start">
+                                <div class="container bg-second-color">
+                                    <div class="row p-2 d-flex">
+                                        <span class="w-45 text-start"><h4 id="displayFoodType" class="fw-bold"></h4>
+                                        </span>
+                                        <span class="w-55 text-end">
+                                            <button id="addToPackageBtn" class="btn btn-outline-success text-uppercase">Add To Cart
+                                                <i class="fa-solid fa-cart-plus"></i>
+                                            </button>
+                                        </span>                                        
+                                    </div>
+                                </div>
+                                <div class="container bg-white">
+                                    <div class="row">   
+                                        <div class="col-4">
+                                            <span class="text-secondary fs-8 fw-semibold">PRICE, USD</span>
+                                            <p id="displayFoodPrice" class="fw-semibold fs-4">0 $</p>
+                                        </div>
+                                        <div class="col-4 d-flex justify-content-around align-items-center">
+                                            <div id="decreaseBtn" class="bg-primary text-white text-center rounded quantity-btn-size toBtn d-flex justify-content-around align-items-center"><i class="fa-solid fa-minus fs-5"></i></div>
+                                            <div id="quantityContainer" class="bg-white text-center px-4 rounded border-special quantaty-div-size d-flex justify-content-around align-items-center"></div>
+                                            <div id="increaseBtn" class="bg-primary text-white text-center rounded quantity-btn-size toBtn d-flex justify-content-around align-items-center"><i class="fa-solid fa-plus fs-5"></i></div>
+                                        </div>
+                                        <div class="col-4 text-end">
+                                            <span class="text-secondary fs-8 fw-semibold">TOTAL, USD</span>
+                                            <p id="displayTotalPrice" class="fw-bolder fs-4">0 $</p>
+                                        </div>    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row p-3">
+                            <table class="table table-striped">
+                                <p id="addToPackageError" class="fs-7 fw-semibold text-danger mx-2 d-none" colspan=""></p>
+                                <thead class="main-color-bg text-white fs-8">
+                                  <tr>
+                                    <th scope="col" class="main-color">N</th>
+                                    <th scope="col" class=" w-50">Customer Package</th>
+                                    <th class="text-center" scope="col">PRICE,$</th>
+                                    <th class="text-center" scope="col">QUANTITY</th>
+                                    <th class="text-center" scope="col">TOTAL</th>
+                                    <th class="text-center" scope="col">DELETE</th>
+                                  </tr>
+                                </thead>
+                                <tbody id="packageContainer">
+                                  <tr>
+                                    <th class="text-center" scope="row"></th>
+                                    <td >Waiting to fill the package..</td>
+                                    <td class="text-center"></td>
+                                    <td class="text-center"></td>
+                                    <td class="text-center"></td>
+                                    <td class="text-center"></td>
+                                  </tr>
+                                  <!-- fill here -->
+                                </tbody>
+                            </table>
+                            <div class="main-color-bg text-white p-3">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-10">Cost before discount</div>
+                                        <div id="costBeforeDiscContainer" class="col-2 text-end"></div>
+                                        <div class="col-10 text-success-light">Discount</div>
+                                        <div id="discContainer" class="col-2 text-end text-success-light"></div>
+                                        <div class="col-10 fs-3">Total to pay :</div>
+                                        <div id="costAfterDiscContainer" class="col-2 text-end fs-3"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <p id="payBtnError" class="fw-semibold text-danger mx-2 text-center d-none" colspan="">Fill The Cart Please</p>
+
+                    </div>
+                </article>
+
+                <aside class="col-4 bg-white">
+                    <div class="text-center">
+                        <img src="images/cashier.jpg" alt="" class="img-special-size">
+                    </div>
+                    <div class="bg-second-color p-2 px-4">
+                        <div class="bg-white d-flex justify-content-around align-items-center rounded border py-2 my-2">
+                            <span id="idSearchBtn" class="toBtn main-color-bg main-color-bg-hover text-white py-2 px-3 rounded"><i class="fa-brands fa-searchengin "></i></span>
+                            <span class="w-75"><input id="idSearchInput" class="form-control border-0" type="search" placeholder="Barcode Search"></span>
+                        </div>
+                        <p id="idSearchError" class="fs-7 fw-semibold text-danger d-none"></p>    
+                        <div class="bg-white rounded border py-2 my-2">            
+                            <h6 class="main-color p-2"><i class="fa-solid fa-list-ul"></i> FreshFood Products Options</h6>
+                            <div class="px-3 ">
+                                <button id="openDisplayProductsSectionBtn" class="w-20 m-auto main-color-bg main-color-bg-hover text-white rounded border py-2 text-center"> 
+                                    <i class="fa-solid fa-display"></i> Display 
+                                </button>
+
+                                <button id="openAddSectionBtn" class="w-20 m-auto main-color-bg main-color-bg-hover text-white rounded border py-2 text-center"> 
+                                    <i class="fa-solid fa-circle-plus"></i> New 
+                                </button>
+                                <button id="openUpdateSectionBtn" class="w-20 m-auto main-color-bg main-color-bg-hover text-white rounded border py-2 text-center"> 
+                                    <i class="fa-solid fa-pen-to-square"></i> Update 
+                                </button>
+                                <button id="deleteFromFoodListBtn" class="w-20 m-auto main-color-bg main-color-bg-hover text-white rounded border py-2 text-center"> 
+                                    <i class="fa-solid fa-trash-arrow-up"></i> Delete
+                                </button>
+                                <p id="openUpdateSectionError" class="fs-7 fw-semibold text-danger d-none mt-3"></p>
+                                <p id="openDeleteSectionError" class="fs-7 fw-semibold text-danger d-none mt-3"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="payBtn" class="toBtn bg-primary rounded-bottom fs-2 text-center text-white p-3">
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                        Pay
+                    </div>
+                </aside>
+
+            </div>
+        </div>
+    </section>
+  
+
+    <section id="diplayProductsSection" class="bg-white bg-opacity-50 position-absolute top-0 start-0 bottom-0 end-0 d-flex d-none">
+        <div class="w-100 d-flex justify-content-center align-items-center">
+            <div class=" w-50 main-color-bg p-3 rounded">                   
+                    <table class="table table-sm table-light mt-2">
+                        <thead class="main-color">
+                          <tr>
+                            <th scope="col"></th>
+                            <th class="w-25 text-center" scope="col">BARECODE</th>
+                            <th class="w-50" scope="col">Food Type</th>
+                            <th scope="col">Price</th>
+                            <th class="text-center" scope="col"><button id="closeDisplayProductsSectionBtn" class="btn main-color"><i class="fa-solid fa-circle-xmark"></i></button></th>
+                          </tr>
+                        </thead>
+                        <tbody id="DisplayProductsSectionContainer"><!-- fill here --></tbody>
+                      </table>
+            </div>    
+        </div>
+    </section>
+
+    <section id="addSection" class="bg-white bg-opacity-50 position-absolute top-0 start-0 bottom-0 end-0 d-flex d-none">
+        <div class="w-100 d-flex justify-content-center align-items-center">
+            <div class="container w-50 main-color-bg p-3 rounded">
+                <div class="row ">
+                    <div class="col-6 justify-content-center">
+                        <input id="enterFoodId" class="form-control m-2" type="text" placeholder="Barecode" aria-label="default input example">    
+                        <input id="enterFoodType" class="form-control m-2" type="text" placeholder="Food Type" aria-label="default input example">
+                        <input id="enterFoodPrice" class="form-control m-2" type="number" placeholder="Price" aria-label="default input example">
+                        <input id="enterFoodPhoto" class="form-control m-2" type="file" accept="image/*" placeholder="Photo" aria-label="default input example">
+                        <div class="text-center">
+                            <button id="addToFoodListBtn" class="btn btn-success my-2 mx-1">Add To FreshFood Products</button>
+                            <button id="closeAddSectionBtn" class="btn btn-success my-2 mx-1">Cancel</button>
+                        </div>
+                        <div id="addSectionMsg" class="alert text-center mt-4 d-none" role="alert">
+                            A simple warning alert—check it out!
+                        </div>                              
+                    </div>
+                    <div class="col-6">
+                        <img id="ImgForAdd" src="images/photo1.jpg" alt="" class="w-100">
+                    </div>      
+                </div>
+            </div>    
+        </div>
+    </section>
+
+    <section id="updateSection" class="bg-white bg-opacity-50 position-absolute top-0 start-0 bottom-0 end-0 d-flex d-none">
+        <div class="w-100 d-flex justify-content-center align-items-center">
+            <div class="container w-50 main-color-bg p-3 rounded">
+                <div class="row ">
+                    <div class="col-6 justify-content-center">
+                        <input id="updateFoodId" class="form-control m-2" type="text" placeholder="Barecode" aria-label="default input example">    
+                        <input id="updateFoodType" class="form-control m-2" type="text" placeholder="Food Type" aria-label="default input example">
+                        <input id="updateFoodPrice" class="form-control m-2" type="number" placeholder="Price" aria-label="default input example">
+                        <input id="updateFoodPhoto" class="form-control m-2" type="file" accept="image/*" placeholder="Photo" aria-label="default input example">
+                        <div class="text-center">
+                            <button id="updateInFoodListBtn" class="btn btn-warning my-2 mx-1">Update This Food</button>
+                            <button id="closeUpdateSectionBtn" class="btn btn-warning my-2 mx-1">Cancel</button>
+                        </div>
+                        <div id="UpdateSectionMsg" class="alert text-center mt-4 d-none" role="alert">
+                            A simple warning alert—check it out!
+                        </div>                              
+                    </div>
+                    <div class="col-6">
+                        <img id="ImgForUpdate" src="images/photo1.jpg" alt="" class="w-100">
+                    </div>      
+                </div>
+            </div>    
+        </div>
+    </section>
+
+    <section id="confirmDeletionSection" class="bg-white bg-opacity-50 position-absolute top-0 start-0 bottom-0 end-0 d-flex d-none">
+        <div class="w-100 d-flex justify-content-center align-items-center">
+            <div class="alert main-color-bg text-white w-50" role="alert">
+                <div class="d-flex align-items-center justify-content-center my-3">
+                    <p class="mx-2 my-0 fw-semibold text-center">Are you sure you want to delete this food - <span id="DisplayChoosedFoodToDelete"></span> - from the market products ?</p>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button id="confirmDeleteBtn" class="btn btn-danger px-4 py-1 mx-1">Delete</button>
+                    <button id="cancelDeleteBtn" class="btn btn-light px-4 py-1 mx-1">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faturaSection" class="bg-white bg-opacity-50 position-absolute top-0 start-0 bottom-0 end-0 d-flex d-none">
+        <div class="w-100 d-flex justify-content-center align-items-center">
+            <div class="container main-color-bg w-50 rounded" role="alert">
+                <div class="row m-2">  
+                    <div class="col-8">
+                        <div class="bg-white py-3">
+                            <div id="faturaContainer" class="container"><!-- fill here --></div>
+                        </div>
+                        <div class="pt-4 text-center">
+                            <button id="saveFaturaBtn" class="btn btn-light">Save</button>
+                            <button id="closeFaturaBtn" class="btn btn-light">Cancel</button>
+                            <button id="printFaturaBtn" class="btn btn-light">Print <i class="fa-solid fa-file"></i></button>
+                        </div>
+                        <div id="faturaSectionMsg" class="w-75 m-auto alert text-center mt-4 d-none" role="alert"></div>                              
+                    </div>
+                    <div class="col-4">
+                        <img src="images/pay1.png" alt="" class="w-100">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
